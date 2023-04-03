@@ -29,9 +29,8 @@ const refs = {
 // console.log(refs.spansLabelEL);
 
 refs.buttonEl.disabled = true;
-
-refs.inputEl.addEventListener('input', onInput);
-// refs.buttonEl.addEventListener('click', onButtonClick);
+let timerInterval = null;
+refs.buttonEl.addEventListener('click', onButtonClick);
 
 const options = {
   enableTime: true,
@@ -48,6 +47,7 @@ const options = {
 };
 
 // console.log(options);
+
 flatpickr(refs.inputEl, options);
 
 function convertMs(ms) {
@@ -73,32 +73,31 @@ function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
 
-function onInput(e) {
-  const chosenDate = new Date(e.currentTarget.value).getTime();
-  //   console.log(chosenDate);
-  refs.buttonEl.addEventListener('click', () => {
-    refs.buttonEl.disabled = true;
-    const timerInterval = setInterval(() => {
-      const currentDate = new Date().getTime();
-      const timeLeft = chosenDate - currentDate;
-      // console.log(currentDate);
-      // console.log(timeLeft);
-      refs.daysSpanEl.textContent = addLeadingZero(convertMs(timeLeft).days);
-      refs.hoursSpanEl.textContent = addLeadingZero(convertMs(timeLeft).hours);
-      refs.minutesSpanEl.textContent = addLeadingZero(
-        convertMs(timeLeft).minutes
-      );
-      refs.secondsSpanEl.textContent = addLeadingZero(
-        convertMs(timeLeft).seconds
-      );
+function onButtonClick() {
+  refs.buttonEl.disabled = true;
+  refs.inputEl.disabled = true;
+  timerInterval = setInterval(() => {
+    const chosenDate = new Date(refs.inputEl.value);
+    // console.log(chosenDate);
+    const currentDate = new Date().getTime();
+    // console.log(currentDate);
+    const timeLeft = chosenDate - currentDate;
+    // console.log(timeLeft);
+    refs.daysSpanEl.textContent = addLeadingZero(convertMs(timeLeft).days);
+    refs.hoursSpanEl.textContent = addLeadingZero(convertMs(timeLeft).hours);
+    refs.minutesSpanEl.textContent = addLeadingZero(
+      convertMs(timeLeft).minutes
+    );
+    refs.secondsSpanEl.textContent = addLeadingZero(
+      convertMs(timeLeft).seconds
+    );
 
-      if (timeLeft < 0) {
-        clearInterval(timerInterval);
-        refs.daysSpanEl.textContent = addLeadingZero(0);
-        refs.hoursSpanEl.textContent = addLeadingZero(0);
-        refs.minutesSpanEl.textContent = addLeadingZero(0);
-        refs.secondsSpanEl.textContent = addLeadingZero(0);
-      }
-    }, 1000);
-  });
+    if (timeLeft < 0) {
+      clearInterval(timerInterval);
+      refs.daysSpanEl.textContent = addLeadingZero(0);
+      refs.hoursSpanEl.textContent = addLeadingZero(0);
+      refs.minutesSpanEl.textContent = addLeadingZero(0);
+      refs.secondsSpanEl.textContent = addLeadingZero(0);
+    }
+  }, 1000);
 }
