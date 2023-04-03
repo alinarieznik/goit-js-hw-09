@@ -8,9 +8,11 @@ const buttonStopEl = bodyEL.querySelector('[data-stop]');
 buttonStartEl.addEventListener('click', onStartButtonClick);
 buttonStopEl.addEventListener('click', onStopButtonClick);
 
+buttonStopEl.disabled = true;
 let timerInterval = null;
 
 function onStartButtonClick(e) {
+  buttonStopEl.disabled = false;
   timerInterval = setInterval(() => {
     bodyEL.style.backgroundColor = getRandomHexColor();
   }, 1000);
@@ -20,6 +22,7 @@ function onStartButtonClick(e) {
 }
 
 function onStopButtonClick(e) {
+  buttonStopEl.disabled = true;
   clearInterval(timerInterval);
   if (e.target) {
     buttonStartEl.removeAttribute('disabled');

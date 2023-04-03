@@ -16,3 +16,57 @@ img {
   display: block;
   max-width: 100%;
 }
+input#datetime-picker {
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.timer-button {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+
+  color: #fff;
+  background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+  background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+}
+
+.timer {
+  background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  gap: 64px;
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+}
