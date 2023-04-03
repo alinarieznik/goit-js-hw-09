@@ -41,6 +41,10 @@ input#datetime-picker {
     inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
 }
 
+.nonactive {
+  background: red;
+}
+
 .timer {
   background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
   box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
@@ -55,9 +59,7 @@ input#datetime-picker {
 }
 
 .field {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 .value {

@@ -74,6 +74,7 @@ function addLeadingZero(value) {
 }
 
 function onButtonClick() {
+  refs.buttonEl.classList.add('nonactive');
   refs.buttonEl.disabled = true;
   refs.inputEl.disabled = true;
   timerInterval = setInterval(() => {
