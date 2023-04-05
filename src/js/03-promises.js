@@ -17,12 +17,13 @@ function onFormSubmit(e) {
 
     createPromise(position, delay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.warning(
+        Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
         );
+        formEl.reset();
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.warning(
+        Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
